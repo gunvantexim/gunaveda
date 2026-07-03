@@ -1,0 +1,81 @@
+[build]
+  publish = "."
+
+# ── SECURITY HEADERS ────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# ── CACHE: STATIC ASSETS ────────────────────────────────────
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── CACHE: HTML — no long caching ───────────────────────────
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ── HTTPS REDIRECTS ──────────────────────────────────────────
+[[redirects]]
+  from = "http://gunaveda.co.in/*"
+  to = "https://www.gunaveda.co.in/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.gunaveda.co.in/*"
+  to = "https://www.gunaveda.co.in/:splat"
+  status = 301
+  force = true
+
+# ── OLD HASH-BASED URLS → new real pages ────────────────────
+[[redirects]]
+  from = "/#moringa"
+  to   = "/moringa.html"
+  status = 301
+
+[[redirects]]
+  from = "/#beetroot"
+  to   = "/beetroot.html"
+  status = 301
+
+[[redirects]]
+  from = "/#shop"
+  to   = "/shop.html"
+  status = 301
+
+[[redirects]]
+  from = "/#about"
+  to   = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/#contact"
+  to   = "/contact.html"
+  status = 301
+
+# ── 404 PAGE
+# NOTE: Must be LAST — Netlify processes redirects top-to-bottom.
+# This catch-all only fires when no file is found at the requested path.
+# It must never appear before the HTTPS or asset redirects.
+[[redirects]]
+  from   = "/*"
+  to     = "/404.html"
+  status = 404

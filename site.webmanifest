@@ -1,0 +1,24 @@
+{
+  "name": "Gunaveda™ — Pure Natural Superfoods",
+  "short_name": "Gunaveda",
+  "description": "Pure Moringa and Beetroot Powder. FSSAI certified. ₹299 / 200g.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF8",
+  "theme_color": "#0D3D24",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "200x133",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["food", "health", "shopping"],
+  "lang": "en-IN"
+}
